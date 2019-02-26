@@ -29,7 +29,3 @@ func Format(format string, args ...interface{}) string {
 func FormatCore(format string, args ...interface{}) string {
 	return fmt.Sprintf(strings.ReplaceAll(format, "{}", "%v"), args...)
 }
-
-func main() {
-	fmt.Print(Format("sf💇‍♂️👬{1}🧖🏿‍♂️{0}-{1}", "zero", 1))
-}
