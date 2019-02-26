@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 var numberTagRegex *regexp.Regexp
@@ -14,9 +15,6 @@ func init() {
 
 // Format formats the given string like C# `String.Format`.
 func Format(format string, args ...interface{}) string {
-	if len(args) == 0 {
-		return format
-	}
 	return numberTagRegex.ReplaceAllStringFunc(format, func(m string) string {
 		// m is like "{123}"
 		index, err := strconv.Atoi(m[1 : len(m)-1])
@@ -25,6 +23,11 @@ func Format(format string, args ...interface{}) string {
 		}
 		return fmt.Sprint(args[index])
 	})
+}
+
+// FormatCore formats the given string like C# `String.Format`.
+func FormatCore(format string, args ...interface{}) string {
+	return fmt.Sprintf(strings.ReplaceAll(format, "{}", "%v"), args...)
 }
 
 func main() {
