@@ -7,7 +7,7 @@ import (
 
 func BenchmarkSprintf(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		fmt.Sprintf("🙅‍♂️%v🧛‍♂️%v%v", 1, "haha", -32)
+		_ = fmt.Sprintf("🙅‍♂️%v🧛‍♂️%v%v", 1, "haha", -32)
 	}
 }
 

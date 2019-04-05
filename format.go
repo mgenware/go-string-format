@@ -27,5 +27,5 @@ func Format(format string, args ...interface{}) string {
 
 // FormatCore formats the given string like C# `String.Format`.
 func FormatCore(format string, args ...interface{}) string {
-	return fmt.Sprintf(strings.ReplaceAll(format, "{}", "%v"), args...)
+	return fmt.Sprintf(strings.Replace(format, "{}", "%v", -1), args...)
 }
